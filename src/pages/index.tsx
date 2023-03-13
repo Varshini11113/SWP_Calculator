@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>FD Calculator</title>
+        <title>SWP Calculator</title>
       </Head>
 
       <div
@@ -72,7 +72,7 @@ export default function Home() {
               "text-[#000000] font-semibold text-[36px] text-center"
             }
           >
-            <span className={"text-[#0161FF] font-semibold text-[36px] "}>FD</span>{" "}
+            <span className={"text-[#0161FF] font-semibold text-[36px] "}>SWP</span>{" "}
             Calculator
           </div>
           <p className={" mt-[10px] text-center leading-28"}>
@@ -178,55 +178,10 @@ export default function Home() {
 
             {/* Total Chart Container*/}
             <div className={"[@media(max-width:1000px)]:w-[100%] lg:w-[50%]"}>
-              
-              <div
-                className={
-                  " absolute flex flex-wrap z-10 place-content-center  w-[61px] h-[33px]  rounded-[30px] border-2 border-solid border-white bg-[#505C6227] shadow-md shadow-[#505C6227] backdrop-blur-[30px] m-0"
-                }
-              >
-                <button
-                  className={
-                    isLineChart
-                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
-                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                  }
-                  onClick={() => {
-                    setCheck(true);
-                  }}
-                >
-                  <MdOutlineShowChart />
-                </button>
-                <button
-                  className={
-                    isLineChart
-                      ? "flex justify-center items-center w-[23px] h-[23px] rounded-[50px]  text-[#909090]"
-                      : "flex justify-center items-center w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white "
-                  }
-                  onClick={() => {
-                    setCheck(false);
-                  }}
-                >
-                  <FaChartPie size={13} />
-                </button>
-              </div>
 
               {/* Charts/Graph */}
               <div className={" relative object-right-top [@media(min-width:200px)]:h-auto md:w-[100%]"}>
-                {isLineChart ? (
-                  <>
                     <LineChart points={graphPoints} />
-                    
-                  </>
-                ) : (
-                  <>
-                    <DoughnutChart
-                      totalInterest={estReturns}
-                      investmentAmount={totalInvestment}
-                      maturityValue={maturityValue}
-                    />
-                    
-                  </>
-                )}
               </div>
 
               
