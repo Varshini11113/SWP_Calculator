@@ -3,23 +3,21 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Input from "../Components/Input.jsx";
 import LineChart from "../Components/LineChart.jsx";
-import DoughnutChart from "@/Components/DoughnutChart.jsx";
+import { FormControl, RadioGroup, Radio,  FormControlLabel, Typography  } from '@mui/material';
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
 import styles from "../styles/Home.module.css";
-
-import { FaChartPie, FaChartLine } from "react-icons/fa";
-import { MdOutlineShowChart } from "react-icons/md";
 
 export default function Home() {
   const [totalInvestment, setTotalInvestment] = useState(100000);
   const [interestRate, setInterestRate] = useState(7);
   const [timePeriod, setTimePeriod] = useState(10);
-  const [isLineChart, setCheck] = useState(true);
+  const [radioValue, setRadioValue] = useState('female');
   const [graphPoints, setGraphPoints] = useState([107000, 114490, 122504, 131080, 140255, 150073, 160578, 171819, 183846,
     196715]);
   const [maturityValue, setMaturityValue] = useState(196716);
   const [estReturns, setEstReturns] = useState(96716);
+  const [withdrawal, setWithdrawal] = useState(15000);
   
   useEffect(() => {
     console.log('myValue changed to:', maturityValue);
@@ -28,6 +26,11 @@ export default function Home() {
   useEffect(() => {
     calculateGraphPoints();
   }, [estReturns]);
+
+  const handleRadioChange = (event) => {
+    setRadioValue(event.target.value);
+    console.log(radioValue);
+  };
 
   function calculate()  {
     let cumulativeAmount: number = Number(totalInvestment);
@@ -91,7 +94,7 @@ export default function Home() {
 
         <div
           className={
-            "flex w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] [@media(max-width:1000px)]:mt-[30px] [@media(min-width:200px)]:gap-4 lg:justify-between [@media(max-width:1000px)]:flex-col md:flex-col lg:flex-row  "
+            "flex w-full xl:max-h-[637px] lg:max-h-[637px] mt-[50px] [@media(max-width:1000px)]:mt-[30px] [@media(min-width:200px)]:gap-4 lg:justify-between [@media(max-width:1000px)]:flex-col md:flex-col lg:flex-row  "
           }
         >
           <div
@@ -104,18 +107,45 @@ export default function Home() {
            
               <div
                 className={
-                  "flex flex-col font-medium space-y-[20px]"
+                  "flex flex-col font-medium space-y-[10px]"
                 }
               >
                
-                <div>
                 
+                  <div className="mb-[30px]">
+                    <FormControl>
+                      <RadioGroup
+                        aria-labelledby="demo-controlled-radio-buttons-group"
+                        name="controlled-radio-buttons-group"
+                        value={radioValue}
+                        onChange={handleRadioChange}
+                      >
+                        <FormControlLabel value="female" control={<Radio style={{ color: '#0161FF' }} />} label={<Typography style={{ fontFamily: "'Poppins', sans-serif", fontWeight: radioValue === 'female' ? '600' : '400',}}>I want to know how long my investment will last</Typography>} />
+                        <FormControlLabel value="male" control={<Radio style={{ color: '#0161FF' }} />} label={<Typography style={{ marginBottom: "-20px", fontFamily: "'Poppins', sans-serif", fontWeight: radioValue === 'male' ? '600' : '400'}}>I want to know my remaining investment balance after SWP tenure</Typography>} />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
+
+                  <div>
                   <div>Total investment</div>
                   <Input
                     id='totalInvestment'
                     type='rupees'
                     value={totalInvestment}
                     setValue={setTotalInvestment}
+                    min={1000}
+                    max={10000000}
+                    step={100}
+                  />
+                </div>
+
+                <div>
+                  <div>Withdrawal per month </div>
+                  <Input
+                    id='totalInvestment'
+                    type='rupees'
+                    value={withdrawal}
+                    setValue={setWithdrawal}
                     min={1000}
                     max={10000000}
                     step={100}
@@ -145,6 +175,7 @@ export default function Home() {
                     max={25}
                   />
                 </div>
+
               </div>
 
               <div
