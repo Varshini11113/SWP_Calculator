@@ -90,6 +90,55 @@ export default function Chart({ points }) {
             }
         ],
 
+        responsive: {
+            rules: [{
+                condition: {
+                    minWidth: 550
+                },
+                chartOptions: {
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        borderColor: '#FFFFFF',
+                        borderRadius: 20,
+                        style: {
+                            display: 'flex',
+                            color: '#000000',
+                            fontSize: '14px',
+                            zIndex: '90',
+                            position: 'absolute',
+                        },
+                        useHTML: true,
+                        formatter: function() {
+                            return `<span style="color:#979797"> Amount    <span style="color:#1B1C20; font-weight: 600;">\u20B9 ${Number(this.y.toFixed(0)).toLocaleString("en-In")}</span> <br> Year    <span style="color:#1B1C20; font-weight: 600;"> ${this.x} </span> </span>`
+                        }
+                    },
+                    xAxis: {
+
+                        allowDecimals: false,
+                        //tickInterval: 1,
+
+                        tickLength: 0,
+
+                        gridLineWidth: 1,
+
+                        // endOnTick: true,
+                        // startOnTick: true,
+
+                        labels: {
+                            style: {
+                                color: "#000000",
+                                fontFamily: 'poppins',
+                                fontSize: '14px',
+                                fontWeight: '400',
+                                opacity: 0.4,
+                            },
+                        },
+
+                    },
+                }
+            }]
+        },
+
         credits: {
             enabled: false
         },

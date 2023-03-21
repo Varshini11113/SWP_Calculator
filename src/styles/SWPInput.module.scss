@@ -16,6 +16,9 @@
   // width: 58%;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+  background-image: linear-gradient(#00D382,#00D382); 
+    background-size: 1% 100%;
+    background-repeat: no-repeat;
 }
 
 .inputBox input[type="range"]::-webkit-slider-runnable-track {
@@ -33,6 +36,7 @@
   border-radius: 50%;
   border: 2px solid #00d87a;
   cursor: pointer;
+  box-shadow: 0px 5px 9px #505C6229;
 }
 
 .inputBox input[type="range"]::-moz-range-progress {
@@ -54,6 +58,7 @@
   background: #dffdee;
   border: 2px solid #00d87a;
   border-radius: 50%;
+  box-shadow: 0px 5px 9px #505C6229;
   cursor: pointer;
 }
 
@@ -64,6 +69,7 @@
   background: #dffdee;
   border-radius: 50%;
   border: 2px solid #00d87a;
+  box-shadow: 0px 5px 9px #505C6229;
   cursor: pointer;
 }
 
@@ -87,14 +93,12 @@
 
 @media (min-width: 1200px) {
   .inputBox input[type="range"] {
-    min-width: 11.25rem; //new
+    min-width: 11.25rem;
   }
 }
 
-//new
 @media (min-width: 1366px) {
   .inputBox input[type="range"] {
-    min-width: 13.25rem; 
+    min-width: 13.25rem;
   }
 }
-
