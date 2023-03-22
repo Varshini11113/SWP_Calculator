@@ -31,7 +31,7 @@ export default function CollapsibleBox({ heading, content = "", isFormula = fals
       >
         {!isFormula? <div className={contentStyle}>{content}</div> : 
         <div className='mb-[20px] mr-[22px]'>
-          <div>It uses the following logic</div> <div className='font-semibold my-[10px]'>A = (MI * ((1+r/400)^quarters - 1))/(1 - (1+r/400)^(-1/3))<br/> Where, <br/> A 	= Total amount by the end of the period <br/> MI 	= Monthly recurring deposit amount <br/> r 	= Annual rate of interest <br/> quarters = number of quarters in the mentioned period <br/> </div>
+          <div>It uses the following logic</div> <div className='font-semibold my-[10px]'>A = WA ((1+r/n)^nt – 1) / (r/n) <br/> Where,                  A = Final value of investment <br/>  WA = Amount withdrawn every period <br/> n = number of compounds in a period <br/> r = expected annual rate of return <br/> t = total number of period for which the money is invested</div>
         </div> }
       </Collapsible >
 
